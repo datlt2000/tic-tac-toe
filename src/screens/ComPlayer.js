@@ -4,6 +4,7 @@ import TranScript from '../base_components/TranScript';
 import { View, Text, ImageBackground } from 'react-native';
 import styles from '../Styles';
 import { Overlay, Button, Icon } from 'react-native-elements';
+import { StatusBar } from 'react-native';
 const defaultRow = () => {
   return JSON.parse(JSON.stringify([
     ['', '', ''],
@@ -41,8 +42,8 @@ function ComPlayer({ navigation }) {
     setData(history[i]);
   };
   const redo = () => {
-    if (i < 9 && i < top) {
-      setData(history[i + 1]);
+    if (i < 8 && i + 1 < top) {
+      setData(history[i + 2]);
       i += 2;
     }
   };
@@ -197,11 +198,12 @@ function ComPlayer({ navigation }) {
     setOver(false);
   };
   return (
-    <ImageBackground source={require(`../img/bg2.jfif`)}
+    <ImageBackground source={require(`../img/bg2.jpeg`)}
       style={[styles.backgroundImage]} >
+      <StatusBar hidden={true} />
       <Button
         type='clear'
-        style={{ alignItems: 'flex-start', marginLeft: 10 }}
+        buttonStyle={{ alignItems: 'flex-start', marginLeft: 10, width: 50 }}
         icon={<Icon name='arrow-left' color='white' type='font-awesome-5' />}
         onPress={() => { navigation.navigate('Home') }}
       />
@@ -214,27 +216,27 @@ function ComPlayer({ navigation }) {
             <Button
               title='Undo'
               onPress={() => undo()}
-              style={{ margin: 20 }} />
+              buttonStyle={{ margin: 20 }} />
             <Button
               title='Redo'
               onPress={() => redo()}
-              style={{ margin: 20 }} />
+              buttonStyle={{ margin: 20 }} />
           </View>
         </View>
         <Overlay isVisible={over}>
           <View>
-            <Text style={{ margin: 20, fontSize: 24, fontWeight: 500 }}>
+            <Text style={{ paddingHorizontal: 30, margin: 20, fontSize: 24, fontWeight: '500' }}>
               {message}
             </Text>
             <View>
               <Button
                 title='Reset'
                 onPress={() => reset()}
-                style={{ margin: 10 }} />
+                buttonStyle={{ margin: 10 }} />
               <Button
                 title='Again'
                 onPress={() => back()}
-                style={{ margin: 10 }} />
+                buttonStyle={{ margin: 10 }} />
             </View>
           </View>
         </Overlay>

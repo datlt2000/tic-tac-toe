@@ -41,12 +41,12 @@ const styles = StyleSheet.create({
   },
   textMedium: {
     fontSize: 26,
-    fontWeight: 500,
+    fontWeight: '500',
     color: 'white'
   },
   textBig: {
     fontSize: 40,
-    fontWeight: 700,
+    fontWeight: '700',
     color: 'white'
   },
   bgPrimary: {

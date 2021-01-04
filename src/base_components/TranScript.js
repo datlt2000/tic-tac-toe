@@ -7,9 +7,9 @@ function TranScript(props) {
     <View style={{ marginBottom: 20 }}>
       <Text style={[styles.textBig, { paddingBottom: 20 }]}>Score Board</Text>
       <View style={{ flexDirection: 'row' }}>
-        <Text style={[styles.textMedium, { flex: 0.5, textAlign: 'start' }]}>X:</Text>
+        <Text style={[styles.textMedium, { flex: 0.5, textAlign: 'left' }]}>X:</Text>
         <Text style={[styles.textMedium, { flex: 0.5, textAlign: 'center' }]}>{props.Xscore}-{props.Oscore}</Text>
-        <Text style={[styles.textMedium, { flex: 0.5, textAlign: 'end' }]}>:O</Text>
+        <Text style={[styles.textMedium, { flex: 0.5, textAlign: 'right' }]}>:O</Text>
       </View>
     </View>
   );

@@ -6,7 +6,7 @@ function Square(props) {
     <Button
       buttonStyle={[styles.square]}
       type="clear"
-      titleStyle={[styles[props.value], { fontSize: 70, fontWeight: 600, }]}
+      titleStyle={[styles[props.value], { fontSize: 70, fontWeight: '600', }]}
       onPress={() => props.handleClick(props.row, props.col)}
       title={props.value} />
   );

@@ -1,12 +1,14 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { ImageBackground } from 'react-native';
 import { Button } from 'react-native-elements';
 import styles from '../Styles';
 function Home({ navigation }) {
   return (
     <ImageBackground
-      source={require(`../img/bg2.jfif`)}
+      source={require(`../img/bg2.jpeg`)}
       style={[styles.center, styles.backgroundImage]}>
+      <StatusBar hidden={true} />
       <Button
         buttonStyle={[styles.button, styles.bgPrimary]}
         title='2 Player'
