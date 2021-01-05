@@ -89,7 +89,7 @@ function ComPlayer({ navigation }) {
       [0, 4, 8],
       [2, 4, 6]
     ];
-    let max = 0, min = 0;
+    let max = -10, min = 10;
     let maxIndex = 0, minIndex = 0;
     let index = -1;
     let score = Array(9).fill(0);
@@ -103,6 +103,7 @@ function ComPlayer({ navigation }) {
     }
     let count = 0;
     for (let j = 0; j < 8; ++j) {
+      if (score[j] === -1 || score[j] === -5) continue;
       if (score[j] > max) {
         max = score[j];
         maxIndex = j;
@@ -126,7 +127,6 @@ function ComPlayer({ navigation }) {
     }
     else if (max === 1 || max === 0) {
       let temp = Math.floor(Math.random() * count);
-      console.log(temp);
       for (let j = 0; j < 8; j++) {
         if (score[j] === max) {
           temp--;
@@ -139,12 +139,24 @@ function ComPlayer({ navigation }) {
     else {
       index = maxIndex;
     }
+    count = 0;
     for (let j = 0; j < 3; ++j) {
       let a = Math.floor(line[index][j] / 3);
       let b = line[index][j] % 3;
       if (data[a][b] === '') {
-        changeO(a, b);
-        break;
+        count++;
+      }
+    }
+    let temp = Math.floor(Math.random() * count);
+    for (let j = 0; j < 3; ++j) {
+      let a = Math.floor(line[index][j] / 3);
+      let b = line[index][j] % 3;
+      if (data[a][b] === '') {
+        temp--;
+        if (temp < 0) {
+          changeO(a, b);
+          break;
+        }
       }
     }
   };
@@ -160,9 +172,10 @@ function ComPlayer({ navigation }) {
       }
     }
     else {
+      setTimeout(() => { }, 1000);
       gameOver(w);
     }
-  }, [Xisnext]);
+  }, [Xisnext, data]);
   const gameOver = (winner) => {
     if (winner === 'O') {
       setOscore(Oscore + 1);
@@ -185,7 +198,8 @@ function ComPlayer({ navigation }) {
     history = [defaultRow()];
     setOver(false);
     setData(defaultRow());
-    Xisnext ? setTurn('Next player: X') : setTurn('Next player: O');
+    Xisnext ? setTurn('Next player: X') : setTurn('Next player:O');
+    if (!Xisnext) computerTurn();
   };
   const reset = () => {
     i = 0;
