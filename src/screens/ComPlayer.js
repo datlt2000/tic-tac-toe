@@ -37,7 +37,7 @@ function ComPlayer({ navigation }) {
     setNext(!Xisnext);
   };
   const undo = () => {
-    if (i < 1) return;
+    if (i <= 1) return;
     i -= 2;
     setData(history[i]);
   };
@@ -168,7 +168,7 @@ function ComPlayer({ navigation }) {
         computerTurn();
       }
       else {
-        setTurn('Next player: X')
+        setTurn('Next player: X');
       }
     }
     else {
