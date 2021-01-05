@@ -4,7 +4,7 @@
     "slug": "tik-tak-toe",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/new-icon.png",
     "splash": {
       "image": "./assets/new-icon.png",
       "resizeMode": "contain",
